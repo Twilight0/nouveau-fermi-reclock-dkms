@@ -61,7 +61,7 @@ sudo systemctl enable --now nouveau-dynclockd.service
 Add the following options to your bootloader configuration (e.g. `/etc/default/grub`):
 
 ```text
-nouveau.modeset=1 acpi_backlight=video video.allow_duplicates=1
+nouveau.modeset=1 acpi_backlight=native video.allow_duplicates=1
 ```
 
 After updating GRUB, rebuild the bootloader config:
@@ -71,15 +71,29 @@ sudo update-grub  # or sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 ---
 
+## Module Options
+
+The driver supports experimental tuning options via `/etc/modprobe.d/nouveau.conf`:
+
+```text
+options nouveau modeset=1 vblank_continuous=1 config="NvFermiDispReclock=1"
+```
+
+- **`vblank_continuous`** (default: `0`): Keeps hardware VBlank interrupts running continuously to support high-refresh (120Hz) frame pacing.
+- **`NvFermiDispReclock`** (default: `0`): Scales internal Fermi display hub clocks (`hubk07`/`hubk06`/`hubk01`) to 405 MHz during performance states for 120Hz pixel throughput.
+- **`NvFermiMemReclock`** (default: `0`): Experimental DDR3 memory frequency scaling.
+
+---
+
 ## Repository Contents
 
 - `PKGBUILD`: Arch Linux / AUR package specification.
 - `.SRCINFO`: AUR metadata.
 - `dkms.conf`: DKMS module build and installation rules.
-- `nouveau-fermi-reclock.patch`: Unified reclocking and backlight patch against upstream Nouveau.
+- `nouveau-fermi-reclock.patch`: Unified reclocking, display clocking, and backlight patch against upstream Nouveau.
 - `nouveau-dynclockd.py`: Dynamic frequency scaling daemon with WebGL load awareness.
 - `nouveau-dynclockd.service`: Systemd service unit for the clocking daemon.
-- `MEMORY_RECLOCK_ANALYSIS.md`: Register-level DDR3 memory timing and mmiotrace analysis reference.
+- `RECLOCKING_NOTES.md`: Comprehensive DDR3 memory reclocking, display architecture, and reverse engineering notes.
 
 ---
 
