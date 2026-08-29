@@ -16,7 +16,7 @@ source=(
   "nouveau-dynclockd.service"
 )
 sha256sums=('1426cea7f5c4959cfcaec78b4974cde3071f51eb9fdf9beedf38efae0bc6b9ad'
-            '343d41feb21bd245d9fb0a25673d448f3f51f9a42857d0c0bfcd0162dcad215e'
+            '0db9f2f1bb611c0ba54122c2ee06164d9457c53a8dce69c9a5be2539d1810da7'
             'e18bc5f217f6562d270f5ad5c0ae10f40ed83a2a52ab52724583e253a2a2f9ce'
             '1055100c81d244dcd5dca924912f8cd7c7228806ed0cc726f667b1432f2860f8'
             '92911764e6fe601af3599a9e0fb95b48fe6109be6208d4150fa762f17c32c7fa')
