@@ -373,3 +373,25 @@
  
  	/* call MEMX process to execute the script, and wait for reply */
  	if (exec) {
+--- a/dispnv50/disp.c
++++ b/dispnv50/disp.c
+@@ -226,6 +226,10 @@
+ MODULE_PARM_DESC(kms_vram_pushbuf, "Place EVO/NVD push buffers in VRAM (default: auto)");
+ static int nv50_dmac_vram_pushbuf = -1;
+ module_param_named(kms_vram_pushbuf, nv50_dmac_vram_pushbuf, int, 0400);
++
++MODULE_PARM_DESC(vblank_continuous, "Keep vblank IRQs continuously enabled for high-refresh displays (default: 0)");
++static int nouveau_vblank_continuous = 0;
++module_param_named(vblank_continuous, nouveau_vblank_continuous, int, 0400);
+ 
+ int
+ nv50_dmac_create(struct nouveau_drm *drm,
+@@ -3011,7 +3015,7 @@
+ 	}
+ 
+ 	/* Disable vblank irqs aggressively for power-saving, safe on nv50+ */
+-	dev->vblank_disable_immediate = true;
++	dev->vblank_disable_immediate = !nouveau_vblank_continuous;
+ 
+ 	nv50_audio_component_init(drm);
+
