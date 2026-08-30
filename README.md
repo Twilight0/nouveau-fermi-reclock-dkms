@@ -91,9 +91,23 @@ options nouveau modeset=1 vblank_continuous=1 config="NvFermiDispReclock=1"
 - `.SRCINFO`: AUR metadata.
 - `dkms.conf`: DKMS module build and installation rules.
 - `nouveau-fermi-reclock.patch`: Unified reclocking, display clocking, and backlight patch against upstream Nouveau.
-- `nouveau-dynclockd.py`: Dynamic frequency scaling daemon with WebGL load awareness.
+- `nouveau-dynclockd.py`: Dynamic frequency scaling daemon with Wayland/EGL load awareness.
 - `nouveau-dynclockd.service`: Systemd service unit for the clocking daemon.
+- `tools/nouveau-fermi-diag.py`: Standalone hardware diagnostic and telemetry gathering tool.
 - `RECLOCKING_NOTES.md`: Comprehensive DDR3 memory reclocking, display architecture, and reverse engineering notes.
+- `CONTRIBUTING.md`: Guide for running diagnostics and submitting hardware telemetry.
+
+---
+
+## 🔍 Hardware Diagnostics & Community Contributions
+
+Have a different Fermi GPU or laptop model? Help us expand hardware compatibility!
+
+Run our standalone diagnostic tool:
+```bash
+sudo python3 tools/nouveau-fermi-diag.py
+```
+And submit your generated `nouveau_fermi_diag_report.md` via our [**Hardware Telemetry Issue Template**](https://github.com/Twilight0/nouveau-fermi-reclock-dkms/issues/new?template=hardware-telemetry.md). See [`CONTRIBUTING.md`](CONTRIBUTING.md) for details.
 
 ---
 
