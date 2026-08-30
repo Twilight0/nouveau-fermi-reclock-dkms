@@ -23,7 +23,7 @@ This directory contains diagnostic artifacts, VBIOS firmware dumps, and MMIO reg
 |---|---|---|
 | **`nvidia_full_reclock_trace.txt.xz`** | ~1.2 MiB | Complete decoded MMIO register trace of full dynamic reclocking transitions (`P8` ↔ `P0` @ 900MHz) under the NVIDIA proprietary driver. |
 | **`nvidia_reclock_full.raw.xz`** | ~1.7 MiB | Raw kernel `mmiotrace` binary capture pipe of memory controller and PLL events. |
-| **`gpu_vbios.rom` / `full_vbios.rom`** | 56 KiB | Reference VBIOS ROM dump containing the BIT tables (`P`, `M`, `U`, `C`, `d`). |
+| **`gpu_vbios.rom`** | 56 KiB | Reference VBIOS ROM dump containing the BIT tables (`P`, `M`, `U`, `C`, `d`). |
 | **`gpu_vbios_perf.txt`** | 69 KiB | Decoded BIT performance tables, frequency steps, and VID voltage curves. |
 | **`nouveau_boot.log`** | 11 KiB | Kernel `dmesg` log showing Nouveau driver initialization and probe sequencing. |
 | **`nvidia_reclock.decoded`** | 2.4 KiB | Focused snippet of MEMX bytecode execution and clock PLL register writes. |
