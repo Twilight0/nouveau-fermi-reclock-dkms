@@ -93,9 +93,12 @@ options nouveau modeset=1 vblank_continuous=1 config="NvFermiDispReclock=1"
 - `nouveau-fermi-reclock.patch`: Unified reclocking, display clocking, and backlight patch against upstream Nouveau.
 - `nouveau-dynclockd.py`: Dynamic frequency scaling daemon with Wayland/EGL load awareness.
 - `nouveau-dynclockd.service`: Systemd service unit for the clocking daemon.
-- `tools/nouveau-fermi-diag.py`: Standalone hardware diagnostic and telemetry gathering tool.
+- `tools/nouveau-fermi-diag.py`: Standalone hardware diagnostic, MMIO register, and VBIOS BIT telemetry tool.
+- `tools/sniff-memory-reclock.py`: Direct hardware BAR0 memory controller (PFB) and PLL timing sniffer.
+- `tools/run-mmiotrace.sh`: Automated kernel MMIO tracing and `demmt` decoder script.
 - `RECLOCKING_NOTES.md`: Comprehensive DDR3 memory reclocking, display architecture, and reverse engineering notes.
 - `CONTRIBUTING.md`: Guide for running diagnostics and submitting hardware telemetry.
+- `TODO.md`: Project roadmap and planned driver enhancements.
 
 ---
 
