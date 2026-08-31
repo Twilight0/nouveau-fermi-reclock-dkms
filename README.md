@@ -14,6 +14,10 @@ Out-of-tree **Nouveau DKMS kernel module** with **Fermi (GF100–GF119)** core, 
 - **Fermi GPU Core & Shader Reclocking (GF100 / GF104 / GF106 / GF108 / GF110 / GF114 / GF116 / GF119)**:
   - Unlocks full core clock scaling from low-power idle `07` (e.g. 202 MHz) up to maximum performance `0f` (590+ MHz).
   - Enables full hardware 3D acceleration (achieving 1600+ FPS in `glxgears` on GeForce GT 555M).
+  - Exposes the shader clock (2× core hot clock) in `/sys/kernel/debug/dri/*/pstate`.
+- **Voltage Correction + Optional Overclock**:
+  - Fixes the `0f` pstate undervoltage on the Dell XPS L702X (870 mV → factory 1.030 V).
+  - Optional synthetic overclock pstate `10` (`core 700 / shader 1400 / memory 900 @ 1.030 V`), gated behind the `NvFermiOC` module option (off by default).
 - **Intelligent Dynamic Frequency Governor (`nouveau-dynclockd`)**:
   - Automatically manages GPU pstates (`07` $\leftrightarrow$ `0f`).
   - Hybrid activity tracking: Instant performance boost on dedicated 3D workloads + load-aware tick sampling for WebGL/browser canvas, keeping idle desktop usage cool and efficient at `07`.
@@ -73,16 +77,32 @@ sudo update-grub  # or sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 ## Module Options
 
-The driver supports experimental tuning options via `/etc/modprobe.d/nouveau.conf`:
+The driver supports tuning options via `/etc/modprobe.d/nouveau-fermi-reclock.conf`:
 
 ```text
-options nouveau modeset=1 vblank_continuous=1 config="NvFermiDispReclock=1"
+# Default (no overclock)
+options nouveau modeset=1 vblank_continuous=1
+
+# Optional: enable the overclock pstate (700/1400 core/shader, memory 900)
+# options nouveau modeset=1 vblank_continuous=1 config=NvFermiOC=true
 ```
 
-- **`vblank_continuous`** (default: `0`): Keeps hardware VBlank interrupts running continuously to support high-refresh (120Hz) frame pacing.
-- **`NvFermiDispReclock`** (default: `0`): Scales internal Fermi display hub clocks (`hubk07`/`hubk06`/`hubk01`) to 405 MHz during performance states for 120Hz pixel throughput.
-- **`NvFermiMemReclock`** (default: `0`): Experimental DDR3 memory frequency scaling.
+### Module parameters
 
+- **`vblank_continuous`** (default: `0`): Keeps hardware VBlank interrupts running continuously to support high-refresh (120Hz) frame pacing. Added by this project.
+- **`modeset`** (default: `1`): Enable kernel modesetting.
+
+### `config=` sub-options
+
+- **`NvFermiOC`** (default: `false`): Creates the synthetic overclock pstate `10` — `core 700 MHz / shader 1400 MHz / memory 900 MHz @ 1.030 V`. Off by default; enable with `config=NvFermiOC=true`, then select it via `nouveau-ctrl set 10`. Added by this project.
+- **`NvFermiMemReclock`** (default: `false`): Experimental DDR3 memory reclock on Fermi. Without it, memory stays at the boot clock (324 MHz) regardless of the requested pstate. Added by this project.
+- **`NvClkMode` / `NvClkModeAC` / `NvClkModeDC`** (upstream): Force the clock state for both / AC / DC power sources respectively. E.g. `NvClkModeDC=07` caps the GPU at P8 (202 MHz) on battery.
+- **`NvPmEnableGating`** (default: `false`, upstream): PMU clock gating for power saving. Unrelated to PMU firmware loading.
+- **`NvFanPWM`** (upstream): Fan PWM control for manual cooling.
+
+### Voltage fix
+
+On the **Dell XPS L702X** (`GF106M`, `10de:0dcd`), the `0f` pstate was undervolted: `nvkm_volt_map` (the VMAP speedo formula) mapped the `0f` voltage ID to 862.5 mV, yielding 870 mV instead of the factory 1.030 V. This project patches `nvkm_pstate_new` to force `0f` to 1.030 V. Without this fix the overclock pstate is unstable under load.
 ---
 
 ## Repository Contents
