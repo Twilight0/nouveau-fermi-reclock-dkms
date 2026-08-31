@@ -1,7 +1,7 @@
 # Maintainer: Twilight0 <https://github.com/Twilight0>
 pkgname=nouveau-fermi-reclock-dkms
 _pkgname=nouveau-fermi-reclock
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Unified Nouveau out-of-tree module with Fermi core/shader reclocking (DKMS)"
 arch=('x86_64')
@@ -15,13 +15,15 @@ source=(
   "nouveau-fermi-reclock.conf"
   "nouveau-dynclockd.py"
   "nouveau-dynclockd.service"
+  "nouveau-ctrl"
 )
 sha256sums=('1426cea7f5c4959cfcaec78b4974cde3071f51eb9fdf9beedf38efae0bc6b9ad'
             '81c9bdc347770d16133cd492b06a5838f2d53fbd08f73667567a7c2a89648b4b'
             'e18bc5f217f6562d270f5ad5c0ae10f40ed83a2a52ab52724583e253a2a2f9ce'
             'f11fe8b77cd55adb957ad97006591c05a75f5df4a65b818ab2e30c7e74f2fed6'
             '45f2dce5fed26507b4d5ca8d554bbf47026aa2baac6831bc867107334c768ff0'
-            '92911764e6fe601af3599a9e0fb95b48fe6109be6208d4150fa762f17c32c7fa')
+            '92911764e6fe601af3599a9e0fb95b48fe6109be6208d4150fa762f17c32c7fa'
+            '55aa7fdb3b880fc0fc6fd37d32568e4ebc1e3868a6b3a11b51a64b2981bf7dcf')
 
 prepare() {
   msg2 "Applying Fermi reclocking and backlight patches..."
@@ -100,19 +102,13 @@ package() {
 
   # Install default modprobe configuration
   install -Dm644 "${srcdir}/nouveau-fermi-reclock.conf" "${pkgdir}/usr/lib/modprobe.d/nouveau-fermi-reclock.conf"
-  
+
   # Install the dynamic clock daemon
   install -Dm755 "${srcdir}/nouveau-dynclockd.py" "${pkgdir}/usr/bin/nouveau-dynclockd.py"
-  
+
   # Install systemd service
   install -Dm644 "${srcdir}/nouveau-dynclockd.service" "${pkgdir}/usr/lib/systemd/system/nouveau-dynclockd.service"
 
-  # Install CLI (local) — PMU fw not needed for Fermi, VBlank wait is enough
-  install -Dm755 "${srcdir}/../nouveau-ctrl" "${pkgdir}/usr/bin/nouveau-ctrl"
-  install -Dm644 /dev/stdin "${pkgdir}/etc/sudoers.d/nouveau-ctrl" <<'SUDOERS'
-twilight ALL=(root) NOPASSWD: /bin/cat /sys/kernel/debug/dri/0/pstate
-twilight ALL=(root) NOPASSWD: /bin/cat /sys/kernel/debug/dri/0/clients
-twilight ALL=(root) NOPASSWD: /usr/bin/tee /sys/kernel/debug/dri/0/pstate
-SUDOERS
-  chmod 440 "${pkgdir}/etc/sudoers.d/nouveau-ctrl"
+  # Install CLI management utility
+  install -Dm755 "${srcdir}/nouveau-ctrl" "${pkgdir}/usr/bin/nouveau-ctrl"
 }
