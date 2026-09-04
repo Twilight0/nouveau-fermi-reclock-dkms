@@ -80,6 +80,14 @@ Userspace write to /sys/kernel/debug/dri/0/pstate
    - *Problem*: Return codes from memory reclocking failures were overwritten before exiting `nvkm_pstate_prog()`.
    - *Fix*: Correctly propagate PMU and MEMX error codes up the call stack.
 
+5. **Display Hub Clock Locking & Black Screen Prevention (`gf100_clk_calc`)**:
+   - *Problem*: In `nvkm/subdev/clk/gf100.c`, `gf100_clk_calc()` attempted to recalculate and reprogram display crossbar/hub clocks (`hubk07`, `hubk06`, `hubk01`) on every performance state change. On Fermi (particularly with high pixel-clock eDP 120Hz displays at 396.36 MHz), reprogramming the hub causes display FIFO underruns, display link loss, or black screens during clock transitions.
+   - *Fix*: Omitted `hubk07`, `hubk06`, and `hubk01` from dynamic frequency transitions. The display hub remains locked to its stable boot frequency, enabling seamless core (`gpc`), shader, and `rop` scaling without display jitter.
+
+6. **VBIOS VMAP Undervoltage Correction (`nvkm_pstate_new`)**:
+   - *Problem*: `nvkm_volt_map` mapped the `0f` voltage ID to 862.5 mV (VID `0x04` = 870 mV) instead of factory 1.030 V (VID `0x01`), causing instability/freezes under 3D load.
+   - *Fix*: Enforcing `cstate->voltage = 0x67` (1030000 µV fallback) for pstate `0x0f` guarantees factory 1.030 V delivery under full 3D load.
+
 ---
 
 ## 4. DDR3 Memory Reclocking Reverse Engineering (Proprietary Trace)
