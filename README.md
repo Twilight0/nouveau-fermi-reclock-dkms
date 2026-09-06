@@ -23,9 +23,11 @@ Out-of-tree **Nouveau DKMS kernel module** with **Fermi (GF100–GF119)** core, 
   - Hybrid activity tracking: Instant performance boost on dedicated 3D workloads + load-aware tick sampling for WebGL/browser canvas, keeping idle desktop usage cool and efficient at `07`.
 - **Hardware Backlight Synchronization**:
   - Automatically bridges ACPI video and platform backlight nodes (`acpi_video0` / `dell_backlight`) to NVIDIA panel PWM (`nv_backlight`) at 100ms intervals.
+- **Interactive Curses TUI & CLI (`nouveau-tui` & `nouveau-ctrl`)**:
+  - `nouveau-tui`: Pulsemixer-styled tabbed interface for live clock monitoring, one-click P-State locking, governor daemon toggling, active DRM/3D client tracking, and sensor telemetry.
+  - `nouveau-ctrl`: Flexible command-line interface for status queries, scripting, and daemon management.
 - **DKMS Integration**:
   - Automatically rebuilds and installs across kernel upgrades.
-
 ---
 
 ## Hardware Configuration Tested
@@ -111,8 +113,9 @@ On the **Dell XPS L702X** (`GF106M`, `10de:0dcd`), the `0f` pstate was undervolt
 - `.SRCINFO`: AUR metadata.
 - `dkms.conf`: DKMS module build and installation rules.
 - `nouveau-fermi-reclock.patch`: Unified reclocking, display clocking, and backlight patch against upstream Nouveau.
+- `nouveau-ctrl`: CLI management utility for status, clock locking, and governor control.
+- `nouveau-tui`: Interactive terminal user interface for GPU reclocking & telemetry.
 - `nouveau-dynclockd.py`: Dynamic frequency scaling daemon with Wayland/EGL load awareness.
-- `nouveau-dynclockd.service`: Systemd service unit for the clocking daemon.
 - `tools/nouveau-fermi-diag.py`: Standalone hardware diagnostic, MMIO register, and VBIOS BIT telemetry tool.
 - `tools/sniff-memory-reclock.py`: Direct hardware BAR0 memory controller (PFB) and PLL timing sniffer.
 - `tools/run-mmiotrace.sh`: Automated kernel MMIO tracing and `demmt` decoder script.
