@@ -1,4 +1,4 @@
-diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/dispnv50/disp.c nouveau-source/dispnv50/disp.c
+diff -uNrp -x '*.o' -x '*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/dispnv50/disp.c nouveau-source/dispnv50/disp.c
 --- nouveau-orig/dispnv50/disp.c	2026-06-12 01:03:26.000000000 +0300
 +++ nouveau-source/dispnv50/disp.c	2026-09-07 14:09:18.281423430 +0300
 @@ -228,6 +228,10 @@ MODULE_PARM_DESC(kms_vram_pushbuf, "Plac
@@ -31,7 +31,7 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  
  	nv50_audio_component_init(drm);
  
-diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nouveau_backlight.c nouveau-source/nouveau_backlight.c
+diff -uNrp -x '*.o' -x '*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nouveau_backlight.c nouveau-source/nouveau_backlight.c
 --- nouveau-orig/nouveau_backlight.c	2026-06-12 01:03:26.000000000 +0300
 +++ nouveau-source/nouveau_backlight.c	2026-09-07 14:09:18.282840660 +0300
 @@ -344,10 +344,7 @@ nouveau_backlight_init(struct drm_connec
@@ -46,7 +46,7 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  
  	if (!nouveau_get_backlight_name(backlight_name, bl)) {
  		NV_ERROR(drm, "Failed to retrieve a unique name for the backlight interface\n");
-diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/clk/base.c nouveau-source/nvkm/subdev/clk/base.c
+diff -uNrp -x '*.o' -x '*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/clk/base.c nouveau-source/nvkm/subdev/clk/base.c
 --- nouveau-orig/nvkm/subdev/clk/base.c	2026-06-12 01:03:26.000000000 +0300
 +++ nouveau-source/nvkm/subdev/clk/base.c	2026-09-17 17:14:40.038439996 +0300
 @@ -282,15 +282,30 @@ nvkm_pstate_prog(struct nvkm_clk *clk, i
@@ -126,9 +126,9 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  	return 0;
  }
  
-diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/clk/gf100.c nouveau-source/nvkm/subdev/clk/gf100.c
+diff -uNrp -x '*.o' -x '*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/clk/gf100.c nouveau-source/nvkm/subdev/clk/gf100.c
 --- nouveau-orig/nvkm/subdev/clk/gf100.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-source/nvkm/subdev/clk/gf100.c	2026-09-18 03:18:42.426084151 +0300
++++ nouveau-source/nvkm/subdev/clk/gf100.c	2026-09-14 14:42:46.206679969 +0300
 @@ -91,6 +91,9 @@ read_pll(struct gf100_clk *clk, u32 pll)
  		return 0;
  	}
@@ -170,28 +170,17 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  	case nv_clk_src_rop:
  		return read_clk(clk, 0x01);
  	case nv_clk_src_hubk07:
-@@ -327,13 +343,16 @@ gf100_clk_calc(struct nvkm_clk *base, st
- 	struct gf100_clk *clk = gf100_clk(base);
- 	int ret;
+@@ -329,9 +345,6 @@ gf100_clk_calc(struct nvkm_clk *base, st
  
-+	/* NOTE: nv_clk_src_pmu (domain 0x0c) is intentionally excluded from
-+	 * runtime clock recalculation. Reclocking the PDAEMON Falcon clock
-+	 * while its resident microcode is actively executing causes an
-+	 * asynchronous clock glitch on the Falcon pipeline, triggering an
-+	 * instruction fetch abort / STOPPED fault that breaks bidirectional
-+	 * memory reclocking fast-path handshakes.
-+	 */
  	if ((ret = calc_clk(clk, cstate, 0x00, nv_clk_src_gpc)) ||
  	    (ret = calc_clk(clk, cstate, 0x01, nv_clk_src_rop)) ||
 -	    (ret = calc_clk(clk, cstate, 0x02, nv_clk_src_hubk07)) ||
 -	    (ret = calc_clk(clk, cstate, 0x07, nv_clk_src_hubk06)) ||
 -	    (ret = calc_clk(clk, cstate, 0x08, nv_clk_src_hubk01)) ||
  	    (ret = calc_clk(clk, cstate, 0x09, nv_clk_src_copy)) ||
--	    (ret = calc_clk(clk, cstate, 0x0c, nv_clk_src_pmu)) ||
+ 	    (ret = calc_clk(clk, cstate, 0x0c, nv_clk_src_pmu)) ||
  	    (ret = calc_clk(clk, cstate, 0x0e, nv_clk_src_vdec)))
- 		return ret;
- 
-@@ -457,9 +476,11 @@ gf100_clk = {
+@@ -457,9 +470,11 @@ gf100_clk = {
  		{ nv_clk_src_hubk06 , 0x00 },
  		{ nv_clk_src_hubk01 , 0x01 },
  		{ nv_clk_src_copy   , 0x02 },
@@ -205,14 +194,14 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  		{ nv_clk_src_vdec   , 0x06 },
  		{ nv_clk_src_pmu    , 0x0a },
  		{ nv_clk_src_hubk07 , 0x0b },
-@@ -477,5 +498,5 @@ gf100_clk_new(struct nvkm_device *device
+@@ -477,5 +492,5 @@ gf100_clk_new(struct nvkm_device *device
  		return -ENOMEM;
  	*pclk = &clk->base;
  
 -	return nvkm_clk_ctor(&gf100_clk, device, type, inst, false, &clk->base);
 +	return nvkm_clk_ctor(&gf100_clk, device, type, inst, true, &clk->base);
  }
-diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/fb/fexec_code.inc nouveau-source/nvkm/subdev/fb/fexec_code.inc
+diff -uNrp -x '*.o' -x '*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/fb/fexec_code.inc nouveau-source/nvkm/subdev/fb/fexec_code.inc
 --- nouveau-orig/nvkm/subdev/fb/fexec_code.inc	1970-01-01 02:00:00.000000000 +0200
 +++ nouveau-source/nvkm/subdev/fb/fexec_code.inc	2026-09-17 21:19:44.911419243 +0300
 @@ -0,0 +1,243 @@
@@ -459,7 +448,7 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
 +	0x00000000, 0x00000000, 0x00000000, 0x00000000,
 +	0x00000000, 0x00000000, 0x00000000, 0x00000000,
 +};
-diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/fb/ramfuc.h nouveau-source/nvkm/subdev/fb/ramfuc.h
+diff -uNrp -x '*.o' -x '*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/fb/ramfuc.h nouveau-source/nvkm/subdev/fb/ramfuc.h
 --- nouveau-orig/nvkm/subdev/fb/ramfuc.h	2026-06-12 01:03:26.000000000 +0300
 +++ nouveau-source/nvkm/subdev/fb/ramfuc.h	2026-09-07 14:09:18.333515126 +0300
 @@ -4,10 +4,15 @@
@@ -668,7 +657,7 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  }
  
  #define ram_init(s,p)        ramfuc_init(&(s)->base, (p))
-diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/fb/ramgf100.c nouveau-source/nvkm/subdev/fb/ramgf100.c
+diff -uNrp -x '*.o' -x '*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/fb/ramgf100.c nouveau-source/nvkm/subdev/fb/ramgf100.c
 --- nouveau-orig/nvkm/subdev/fb/ramgf100.c	2026-06-12 01:03:26.000000000 +0300
 +++ nouveau-source/nvkm/subdev/fb/ramgf100.c	2026-09-17 21:20:21.178635156 +0300
 @@ -123,6 +123,286 @@ gf100_ram_train(struct gf100_ramfuc *fuc
@@ -1006,7 +995,7 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  	return 0;
  }
  
-diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/pmu/fuc/gf100.fuc3.h nouveau-source/nvkm/subdev/pmu/fuc/gf100.fuc3.h
+diff -uNrp -x '*.o' -x '*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/pmu/fuc/gf100.fuc3.h nouveau-source/nvkm/subdev/pmu/fuc/gf100.fuc3.h
 --- nouveau-orig/nvkm/subdev/pmu/fuc/gf100.fuc3.h	2026-06-12 01:03:26.000000000 +0300
 +++ nouveau-source/nvkm/subdev/pmu/fuc/gf100.fuc3.h	2026-09-07 14:09:18.334644255 +0300
 @@ -1260,7 +1260,7 @@ static uint32_t gf100_pmu_code[] = {
@@ -1033,7 +1022,7 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  /* 0x050a: host_init */
  	0x17f100f8,
  	0x14b60080,
-diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/pmu/gt215.c nouveau-source/nvkm/subdev/pmu/gt215.c
+diff -uNrp -x '*.o' -x '*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/pmu/gt215.c nouveau-source/nvkm/subdev/pmu/gt215.c
 --- nouveau-orig/nvkm/subdev/pmu/gt215.c	2026-06-12 01:03:26.000000000 +0300
 +++ nouveau-source/nvkm/subdev/pmu/gt215.c	2026-09-07 15:06:39.534885364 +0300
 @@ -23,6 +23,7 @@
@@ -1624,7 +1613,7 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  	return 0;
  }
  
-diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/pmu/memx.c nouveau-source/nvkm/subdev/pmu/memx.c
+diff -uNrp -x '*.o' -x '*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/pmu/memx.c nouveau-source/nvkm/subdev/pmu/memx.c
 --- nouveau-orig/nvkm/subdev/pmu/memx.c	2026-06-12 01:03:26.000000000 +0300
 +++ nouveau-source/nvkm/subdev/pmu/memx.c	2026-09-07 14:09:18.336312616 +0300
 @@ -61,9 +61,11 @@ nvkm_memx_init(struct nvkm_pmu *pmu, str

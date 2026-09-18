@@ -1,4 +1,4 @@
-diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/dispnv50/disp.c nouveau-source/dispnv50/disp.c
+diff -uNrp -x '*.o' -x '*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/dispnv50/disp.c nouveau-source/dispnv50/disp.c
 --- nouveau-orig/dispnv50/disp.c	2026-06-12 01:03:26.000000000 +0300
 +++ nouveau-source/dispnv50/disp.c	2026-09-07 14:09:18.281423430 +0300
 @@ -228,6 +228,10 @@ MODULE_PARM_DESC(kms_vram_pushbuf, "Plac
@@ -31,7 +31,7 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  
  	nv50_audio_component_init(drm);
  
-diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nouveau_backlight.c nouveau-source/nouveau_backlight.c
+diff -uNrp -x '*.o' -x '*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nouveau_backlight.c nouveau-source/nouveau_backlight.c
 --- nouveau-orig/nouveau_backlight.c	2026-06-12 01:03:26.000000000 +0300
 +++ nouveau-source/nouveau_backlight.c	2026-09-07 14:09:18.282840660 +0300
 @@ -344,10 +344,7 @@ nouveau_backlight_init(struct drm_connec
@@ -46,7 +46,7 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  
  	if (!nouveau_get_backlight_name(backlight_name, bl)) {
  		NV_ERROR(drm, "Failed to retrieve a unique name for the backlight interface\n");
-diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/clk/base.c nouveau-source/nvkm/subdev/clk/base.c
+diff -uNrp -x '*.o' -x '*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/clk/base.c nouveau-source/nvkm/subdev/clk/base.c
 --- nouveau-orig/nvkm/subdev/clk/base.c	2026-06-12 01:03:26.000000000 +0300
 +++ nouveau-source/nvkm/subdev/clk/base.c	2026-09-17 17:14:40.038439996 +0300
 @@ -282,15 +282,30 @@ nvkm_pstate_prog(struct nvkm_clk *clk, i
@@ -126,9 +126,9 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  	return 0;
  }
  
-diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/clk/gf100.c nouveau-source/nvkm/subdev/clk/gf100.c
+diff -uNrp -x '*.o' -x '*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/clk/gf100.c nouveau-source/nvkm/subdev/clk/gf100.c
 --- nouveau-orig/nvkm/subdev/clk/gf100.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-source/nvkm/subdev/clk/gf100.c	2026-09-18 03:18:42.426084151 +0300
++++ nouveau-source/nvkm/subdev/clk/gf100.c	2026-09-14 14:42:46.206679969 +0300
 @@ -91,6 +91,9 @@ read_pll(struct gf100_clk *clk, u32 pll)
  		return 0;
  	}
@@ -170,28 +170,17 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  	case nv_clk_src_rop:
  		return read_clk(clk, 0x01);
  	case nv_clk_src_hubk07:
-@@ -327,13 +343,16 @@ gf100_clk_calc(struct nvkm_clk *base, st
- 	struct gf100_clk *clk = gf100_clk(base);
- 	int ret;
+@@ -329,9 +345,6 @@ gf100_clk_calc(struct nvkm_clk *base, st
  
-+	/* NOTE: nv_clk_src_pmu (domain 0x0c) is intentionally excluded from
-+	 * runtime clock recalculation. Reclocking the PDAEMON Falcon clock
-+	 * while its resident microcode is actively executing causes an
-+	 * asynchronous clock glitch on the Falcon pipeline, triggering an
-+	 * instruction fetch abort / STOPPED fault that breaks bidirectional
-+	 * memory reclocking fast-path handshakes.
-+	 */
  	if ((ret = calc_clk(clk, cstate, 0x00, nv_clk_src_gpc)) ||
  	    (ret = calc_clk(clk, cstate, 0x01, nv_clk_src_rop)) ||
 -	    (ret = calc_clk(clk, cstate, 0x02, nv_clk_src_hubk07)) ||
 -	    (ret = calc_clk(clk, cstate, 0x07, nv_clk_src_hubk06)) ||
 -	    (ret = calc_clk(clk, cstate, 0x08, nv_clk_src_hubk01)) ||
  	    (ret = calc_clk(clk, cstate, 0x09, nv_clk_src_copy)) ||
--	    (ret = calc_clk(clk, cstate, 0x0c, nv_clk_src_pmu)) ||
+ 	    (ret = calc_clk(clk, cstate, 0x0c, nv_clk_src_pmu)) ||
  	    (ret = calc_clk(clk, cstate, 0x0e, nv_clk_src_vdec)))
- 		return ret;
- 
-@@ -457,9 +476,11 @@ gf100_clk = {
+@@ -457,9 +470,11 @@ gf100_clk = {
  		{ nv_clk_src_hubk06 , 0x00 },
  		{ nv_clk_src_hubk01 , 0x01 },
  		{ nv_clk_src_copy   , 0x02 },
@@ -205,261 +194,245 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  		{ nv_clk_src_vdec   , 0x06 },
  		{ nv_clk_src_pmu    , 0x0a },
  		{ nv_clk_src_hubk07 , 0x0b },
-@@ -477,5 +498,5 @@ gf100_clk_new(struct nvkm_device *device
+@@ -477,5 +492,5 @@ gf100_clk_new(struct nvkm_device *device
  		return -ENOMEM;
  	*pclk = &clk->base;
  
 -	return nvkm_clk_ctor(&gf100_clk, device, type, inst, false, &clk->base);
 +	return nvkm_clk_ctor(&gf100_clk, device, type, inst, true, &clk->base);
  }
-diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/fb/fexec_code.inc nouveau-source/nvkm/subdev/fb/fexec_code.inc
+diff -uNrp -x '*.o' -x '*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/fb/fexec_code.inc nouveau-source/nvkm/subdev/fb/fexec_code.inc
 --- nouveau-orig/nvkm/subdev/fb/fexec_code.inc	1970-01-01 02:00:00.000000000 +0200
-+++ nouveau-source/nvkm/subdev/fb/fexec_code.inc	2026-09-17 21:19:44.911419243 +0300
-@@ -0,0 +1,243 @@
++++ nouveau-source/nvkm/subdev/fb/fexec_code.inc	2026-09-17 17:10:48.243597567 +0300
+@@ -0,0 +1,227 @@
 +/* Native resident Falcon executor for Fermi GF106 DDR3 reclocking */
 +static const u32 fexec_code[] = {
-+	0xfe1e0ef4, 0x97f101ca, 0x94b60080, 0x009ad006,
-+	0xf11832f4, 0xfe5ff097, 0x0ef50094, 0x97f100b7,
-+	0x94fe5ff0, 0x0397f000, 0xf40093fe, 0x32f41032,
-+	0x1832f411, 0xb61497f0, 0xb7f10694, 0xb3f1ffff,
-+	0x9bd0ffff, 0x0497f000, 0xf10694b6, 0xf1ffffb7,
-+	0xd0ffffb3, 0x97f0009b, 0x0694b628, 0x9bd0b4bd,
-+	0x3897f000, 0xbd0694b6, 0x009bd0b4, 0x008497f1,
-+	0xcf0694b6, 0xa6b0009a, 0x230bf401, 0xf402a6b0,
-+	0x0ef4240b, 0x8097f103, 0x0694b600, 0x0001b7f1,
-+	0xe1ecb3f1, 0xbd009bd0, 0x380ef404, 0x010e21f5,
-+	0xf50a0ef4, 0xf406be21, 0x97f1030e, 0x94fe5ff0,
-+	0x8497f100, 0x0694b600, 0x9bd0b4bd, 0x8097f100,
-+	0x0694b600, 0x0001b7f1, 0xe1ecb3f1, 0xbd009bd0,
-+	0x8497f104, 0x0694b600, 0x00c877f1, 0xb00172b6,
-+	0x1bf40076, 0x009acffa, 0xf401a6b0, 0xa6b0b10b,
-+	0xb20bf402, 0xf1e40ef4, 0xb6008097, 0xb7f10694,
-+	0xb3f10000, 0x9bd0dead, 0xf404bd00, 0xe7f1c60e,
-+	0xe3f07300, 0x03d7f113, 0x3521f501, 0x70e7f10e,
-+	0x13e3f073, 0xf507d7f0, 0xf10e3521, 0xf07380e7,
-+	0xd7f013e3, 0x3521f501, 0x08e7f10e, 0x10e3f0f8,
-+	0x0004d7f1, 0x4802d3f1, 0x0e3521f5, 0xf824e7f1,
-+	0xf110e3f0, 0xf07867d7, 0x21f502d3, 0x77f10e35,
-+	0x21f50548, 0xe7f10cec, 0xe3f00b0c, 0x12d7f110,
-+	0x08d3f000, 0x0e3521f5, 0x0cf721f5, 0x1200e7f1,
-+	0xf161e3f0, 0xf53300d7, 0xf50e3521, 0xf10d0621,
-+	0xf0f200e7, 0xd7f110e3, 0xd3f08000, 0x3521f502,
-+	0x08e7f10e, 0x10e3f0f8, 0x0004d7f1, 0x4c02d3f1,
-+	0x0e3521f5, 0x02a477f1, 0x0cec21f5, 0x73ece7f1,
-+	0xf113e3f0, 0xf00909d7, 0x21f502d3, 0xe7f10e35,
-+	0xe3f0f290, 0x13d7f110, 0x1ad3f192, 0x3521f506,
-+	0x14e7f10e, 0x10e3f0f3, 0xf501d7f0, 0xf10e3521,
-+	0xf0f210e7, 0xd4bd10e3, 0x0e3521f5, 0xf310e7f1,
-+	0xf010e3f0, 0x21f501d7, 0xe7f10e35, 0xe3f0f310,
-+	0x01d7f010, 0x0e3521f5, 0xf56477f0, 0xf10cec21,
-+	0xf0f090e7, 0xd7f010e3, 0x3521f560, 0x90e7f10e,
-+	0x10e3f0f0, 0x007ed7f1, 0xc000d3f1, 0x0e3521f5,
-+	0x7360e7f1, 0xf013e3f0, 0x21f501d7, 0xe7f10e35,
-+	0xe3f07370, 0xf5d4bd13, 0xf10e3521, 0xf07380e7,
-+	0xd4bd13e3, 0x0e3521f5, 0x2000e7f1, 0xf113e3f0,
-+	0xf10000d7, 0xf51803d3, 0xf10e3521, 0xf0fe20e7,
-+	0xd7f110e3, 0xd3f10000, 0x21f52003, 0xe7f10e35,
-+	0xe3f07320, 0x03d7f113, 0x3521f501, 0x30e7f10e,
-+	0x13e3f073, 0x0600d7f1, 0x8120d3f1, 0x0e3521f5,
-+	0xfe20e7f1, 0xf110e3f0, 0xf10001d7, 0xf52003d3,
-+	0xf10e3521, 0xf07390e7, 0x57f113e3, 0x53f00000,
-+	0x0047f102, 0x0243f000, 0x000077f1, 0xf51073f0,
-+	0xf10cd021, 0xf0fe20e7, 0xd7f110e3, 0xd3f10005,
-+	0x21f52003, 0xe7f10e35, 0xe3f02004, 0x0bd7f113,
-+	0x02d3f023, 0x0e3521f5, 0x2000e7f1, 0xf113e3f0,
-+	0xf10001d7, 0xf51803d3, 0xf10e3521, 0xf07390e7,
-+	0x57f013e3, 0x0247f002, 0x000077f1, 0xf51073f0,
-+	0xf10cd021, 0xf0f874e7, 0xd4bd10e3, 0x0e3521f5,
-+	0xf824e7f1, 0xf110e3f0, 0xf01867d7, 0x21f502d3,
-+	0x77f10e35, 0x21f50548, 0xe7f10cec, 0xe3f02018,
-+	0x00d7f113, 0x3521f550, 0xe877f10e, 0xec21f503,
-+	0x10e7f10c, 0x10e3f0f9, 0x2000d7f1, 0x0e3521f5,
-+	0xf914e7f1, 0xf110e3f0, 0xf52000d7, 0xf10e3521,
-+	0xf0f658e7, 0xd4bd10e3, 0x0e3521f5, 0xf830e7f1,
-+	0xf010e3f0, 0x21f511d7, 0x77f10e35, 0x21f50548,
-+	0xe7f10cec, 0xe3f07370, 0x07d7f013, 0x0e3521f5,
-+	0x7380e7f1, 0xf013e3f0, 0x21f501d7, 0xe7f10e35,
-+	0xe3f07360, 0xf5d4bd13, 0xf10e3521, 0xf0f090e7,
-+	0xd7f110e3, 0xd3f1007f, 0x21f54000, 0xe7f10e35,
-+	0xe3f0f210, 0x00d7f110, 0x00d3f100, 0x3521f580,
-+	0x6477f00e, 0x0cec21f5, 0xf300e7f1, 0xf110e3f0,
-+	0xf51520d7, 0xf00e3521, 0x21f56477, 0xe7f10cec,
-+	0xe3f0f300, 0x20d7f110, 0x3521f514, 0x6477f00e,
-+	0x0cec21f5, 0xf320e7f1, 0xf110e3f0, 0xf000a0d7,
-+	0x21f520d3, 0x77f00e35, 0xec21f564, 0x00e7f10c,
-+	0x10e3f0f3, 0x1e04d7f1, 0x0e3521f5, 0xf56477f0,
-+	0xf10cec21, 0xf0f224e7, 0xd7f110e3, 0xd3f10c07,
-+	0x21f50e07, 0xe7f10e35, 0xe3f0f290, 0x2ed7f110,
-+	0x44d3f192, 0x3521f50e, 0x94e7f10e, 0x10e3f0f2,
-+	0x848cd7f1, 0x4ce3d3f1, 0x0e3521f5, 0xf298e7f1,
-+	0xf110e3f0, 0xf10711d7, 0xf5440ed3, 0xf10e3521,
-+	0xf0f29ce7, 0xd7f110e3, 0x21f550b6, 0xe7f10e35,
-+	0xe3f0f2a0, 0x69d7f110, 0xe3d3f180, 0x3521f542,
-+	0x00e7f10e, 0x10e3f0f2, 0x9000d7f1, 0xf502d3f0,
-+	0xf10e3521, 0xf0f604e7, 0xd7f110e3, 0xd3f10000,
-+	0x21f5f100, 0xe7f10e35, 0xe3f0f614, 0x77d7f110,
-+	0x04d3f14e, 0x3521f540, 0x10e7f10e, 0x10e3f0f6,
-+	0x4e77d7f1, 0x4004d3f1, 0x0e3521f5, 0xf808e7f1,
-+	0xf110e3f0, 0xf10000d7, 0xf55692d3, 0xf10e3521,
-+	0xf50a9077, 0xf10cec21, 0xf073f8e7, 0xd7f113e3,
-+	0x21f52040, 0xe7f10e35, 0xe3f0f870, 0xaad7f110,
-+	0xaad3f1aa, 0x3521f5aa, 0xa477f10e, 0xec21f502,
-+	0x00e7f10c, 0x10e3f00c, 0x0124d7f1, 0x0400d3f1,
-+	0x0e3521f5, 0xf300e7f1, 0xf110e3f0, 0xf51f04d7,
-+	0xf00e3521, 0x21f56477, 0xe7f10cec, 0xe3f0f300,
-+	0x04d7f110, 0x3521f51e, 0x6477f00e, 0x0cec21f5,
-+	0xf56477f0, 0xf10cec21, 0xf0f830e7, 0xd7f110e3,
-+	0xd3f10011, 0x21f50100, 0xe7f10e35, 0xe3f0f830,
-+	0x11d7f010, 0x0e3521f5, 0x0d7d21f5, 0x054877f1,
-+	0x0cec21f5, 0x0b0ce7f1, 0xf110e3f0, 0xf00028d7,
-+	0x21f508d3, 0xe7f10e35, 0xe3f01200, 0x30d7f161,
-+	0x3521f533, 0x00e7f10e, 0x10e3f0f2, 0x9800d7f1,
-+	0xf502d3f0, 0xf10e3521, 0xf0f824e7, 0xd7f110e3,
-+	0xd3f01e67, 0x3521f502, 0x48e7f10e, 0x00e3f015,
-+	0x0102d7f1, 0x0e3521f5, 0xf468e7f1, 0xf110e3f0,
-+	0xf00020d7, 0x21f502d3, 0xe7f10e35, 0xe3f0f420,
-+	0x43d7f010, 0x0e3521f5, 0xf430e7f1, 0xf010e3f0,
-+	0x21f541d7, 0xe7f10e35, 0xe3f0f400, 0x1fd7f110,
-+	0x3521f517, 0x10e7f10e, 0x10e3f0f4, 0x0107d7f1,
-+	0x0e3521f5, 0xf444e7f1, 0xf110e3f0, 0xf1883fd7,
-+	0xf504ccd3, 0xf10e3521, 0xf01548e7, 0xd7f100e3,
-+	0x21f50101, 0xe7f10e35, 0xe3f01548, 0x01d7f100,
-+	0x00d3f101, 0x3521f580, 0x50e7f10e, 0x10e3f0f0,
-+	0x1050d7f1, 0xff00d3f1, 0x0e3521f5, 0xe7f100f8,
-+	0xe3f07300, 0x03d7f113, 0x3521f501, 0x70e7f10e,
-+	0x13e3f073, 0xf507d7f0, 0xf10e3521, 0xf07380e7,
-+	0xd7f013e3, 0x3521f501, 0x24e7f10e, 0x10e3f0f8,
-+	0x1867d7f1, 0xf502d3f0, 0xf10e3521, 0xf502a477,
-+	0xf10cec21, 0xf00b0ce7, 0xd7f110e3, 0xd3f00012,
-+	0x3521f508, 0xf721f50e, 0x00e7f10c, 0x61e3f012,
-+	0x3300d7f1, 0x0e3521f5, 0x0d0621f5, 0xf200e7f1,
-+	0xf110e3f0, 0xf09000d7, 0x21f502d3, 0xe7f10e35,
-+	0xe3f0f314, 0x01d7f010, 0x0e3521f5, 0xf210e7f1,
-+	0xbd10e3f0, 0x3521f5d4, 0x10e7f10e, 0x10e3f0f3,
-+	0xf501d7f0, 0xf10e3521, 0xf0f310e7, 0xd7f010e3,
-+	0x3521f501, 0x6477f00e, 0x0cec21f5, 0xf090e7f1,
-+	0xf010e3f0, 0x21f560d7, 0xe7f10e35, 0xe3f0f090,
-+	0x7ed7f110, 0x00d3f100, 0x3521f5c0, 0x60e7f10e,
-+	0x13e3f073, 0xf501d7f0, 0xf10e3521, 0xf0f830e7,
-+	0xd7f010e3, 0x3521f517, 0xa477f10e, 0xec21f502,
-+	0x70e7f10c, 0x13e3f073, 0x21f5d4bd, 0xe7f10e35,
-+	0xe3f07380, 0xf5d4bd13, 0xf10e3521, 0xf02018e7,
-+	0xd7f113e3, 0x21f51000, 0xe7f10e35, 0xe3f02000,
-+	0x00d7f113, 0x03d3f100, 0x3521f518, 0x20e7f10e,
-+	0x10e3f0fe, 0x0000d7f1, 0x2003d3f1, 0x0e3521f5,
-+	0x7320e7f1, 0xf113e3f0, 0xf50103d7, 0xf10e3521,
-+	0xf07330e7, 0xd7f113e3, 0xd3f10600, 0x21f58120,
-+	0xe7f10e35, 0xe3f0fe20, 0x01d7f110, 0x03d3f100,
-+	0x3521f520, 0x90e7f10e, 0x13e3f073, 0x000057f1,
-+	0xf10253f0, 0xf0000047, 0x77f10243, 0x73f00000,
-+	0xd021f510, 0x20e7f10c, 0x10e3f0fe, 0x0005d7f1,
-+	0x2003d3f1, 0x0e3521f5, 0x2004e7f1, 0xf113e3f0,
-+	0xf01806d7, 0x21f507d3, 0xe7f10e35, 0xe3f02000,
-+	0x01d7f113, 0x03d3f100, 0x3521f518, 0x90e7f10e,
-+	0x13e3f073, 0xf00257f0, 0x77f10247, 0x73f00000,
-+	0xd021f510, 0x74e7f10c, 0x10e3f0f8, 0x0000d7f1,
-+	0x0400d3f1, 0x0e3521f5, 0xf658e7f1, 0xf110e3f0,
-+	0xf08989d7, 0x21f591d3, 0x77f10e35, 0x21f50548,
-+	0xe7f10cec, 0xe3f02018, 0x00d7f113, 0x00d3f110,
-+	0x3521f510, 0x60e7f10e, 0x10e3f0f6, 0x1010d7f1,
-+	0x0e3521f5, 0xf910e7f1, 0xbd10e3f0, 0x3521f5d4,
-+	0x14e7f10e, 0x10e3f0f9, 0x21f5d4bd, 0xe7f10e35,
-+	0xe3f0f824, 0x67d7f110, 0x02d3f078, 0x0e3521f5,
-+	0x054877f1, 0x0cec21f5, 0x7370e7f1, 0xf013e3f0,
-+	0x21f507d7, 0xe7f10e35, 0xe3f07380, 0x01d7f013,
-+	0x0e3521f5, 0x7360e7f1, 0xbd13e3f0, 0x3521f5d4,
-+	0x90e7f10e, 0x10e3f0f0, 0x007fd7f1, 0x4000d3f1,
-+	0x0e3521f5, 0xf210e7f1, 0xf110e3f0, 0xf10000d7,
-+	0xf58000d3, 0xf00e3521, 0x21f56477, 0xe7f10cec,
-+	0xe3f0f300, 0x04d7f110, 0x3521f51f, 0x6477f00e,
-+	0x0cec21f5, 0xf300e7f1, 0xf110e3f0, 0xf51e04d7,
-+	0xf00e3521, 0x21f56477, 0xe7f10cec, 0xe3f0f320,
-+	0x80d7f110, 0x20d3f000, 0x0e3521f5, 0xf56477f0,
-+	0xf10cec21, 0xf0f300e7, 0xd7f110e3, 0x21f51420,
-+	0x77f00e35, 0xec21f564, 0x24e7f10c, 0x10e3f0f2,
-+	0x0c07d7f1, 0x0e05d3f1, 0x0e3521f5, 0xf290e7f1,
-+	0xf110e3f0, 0xf13813d7, 0xf5061ad3, 0xf10e3521,
-+	0xf0f294e7, 0xd7f110e3, 0xd3f18286, 0x21f54c61,
-+	0xe7f10e35, 0xe3f0f298, 0x11d7f110, 0x06d3f104,
-+	0x3521f544, 0x9ce7f10e, 0x10e3f0f2, 0x1e6ad7f1,
-+	0x0e3521f5, 0xf2a0e7f1, 0xf110e3f0, 0xf18069d7,
-+	0xf542e2d3, 0xf10e3521, 0xf0f200e7, 0xd7f110e3,
-+	0xd3f08000, 0x3521f502, 0x04e7f10e, 0x10e3f0f6,
-+	0x0000d7f1, 0xf000d3f1, 0x0e3521f5, 0xf614e7f1,
-+	0xf110e3f0, 0xf14f77d7, 0xf54004d3, 0xf10e3521,
-+	0xf0f610e7, 0xd7f110e3, 0xd3f14f77, 0x21f54004,
-+	0xe7f10e35, 0xe3f0f808, 0x04d7f110, 0x02d3f100,
-+	0x3521f548, 0x9077f10e, 0xec21f50a, 0xece7f10c,
-+	0x13e3f073, 0x0909d7f1, 0x0e3521f5, 0x73f8e7f1,
-+	0xf113e3f0, 0xf52055d7, 0xf10e3521, 0xf0f870e7,
-+	0xd7f110e3, 0xd3f1aaaa, 0x21f5aaaa, 0x77f10e35,
-+	0x21f502a4, 0xe7f10cec, 0xe3f00c00, 0x24d7f110,
-+	0x00d3f101, 0x3521f50c, 0x00e7f10e, 0x10e3f0f3,
-+	0x1520d7f1, 0x0e3521f5, 0xf56477f0, 0xf10cec21,
-+	0xf0f300e7, 0xd7f110e3, 0x21f51420, 0x77f00e35,
-+	0xec21f564, 0x6477f00c, 0x0cec21f5, 0xf324e7f1,
-+	0xf110e3f0, 0xf503cbd7, 0xf10e3521, 0xf0f324e7,
-+	0xd7f110e3, 0x21f506cb, 0xe7f10e35, 0xe3f0f324,
-+	0xcbd7f110, 0x3521f501, 0x24e7f10e, 0x10e3f0f3,
-+	0x03cad7f1, 0x0e3521f5, 0xf324e7f1, 0xf110e3f0,
-+	0xf506cad7, 0xf10e3521, 0xf0f324e7, 0xd7f110e3,
-+	0x21f501ca, 0xe7f10e35, 0xe3f0f830, 0x17d7f110,
-+	0x00d3f100, 0x3521f501, 0x30e7f10e, 0x10e3f0f8,
-+	0xf517d7f0, 0xf50e3521, 0xf10d7d21, 0xf5054877,
-+	0xf10cec21, 0xf00b0ce7, 0xd7f110e3, 0xd3f00028,
-+	0x3521f508, 0x00e7f10e, 0x61e3f012, 0x3330d7f1,
-+	0x0e3521f5, 0xf200e7f1, 0xf110e3f0, 0xf08800d7,
-+	0x21f502d3, 0xe7f10e35, 0xe3f02018, 0x00d7f113,
-+	0x00d3f110, 0x3521f510, 0x24e7f10e, 0x10e3f0f8,
-+	0x79e7d7f1, 0xf502d3f0, 0xf10e3521, 0xf0f808e7,
-+	0xd7f110e3, 0xd3f10004, 0x21f50802, 0xe7f10e35,
-+	0xe3f01548, 0x02d7f100, 0x3521f501, 0x68e7f10e,
-+	0x10e3f0f4, 0x1005d7f1, 0x0e3521f5, 0xf420e7f1,
-+	0xf010e3f0, 0x21f542d7, 0xe7f10e35, 0xe3f0f430,
-+	0x40d7f010, 0x0e3521f5, 0xf400e7f1, 0xf110e3f0,
-+	0xf51707d7, 0xf10e3521, 0xf0f410e7, 0xd7f110e3,
-+	0x21f50307, 0xe7f10e35, 0xe3f0f444, 0x1fd7f110,
-+	0xccd3f100, 0x3521f504, 0x48e7f10e, 0x00e3f015,
-+	0x0101d7f1, 0x0e3521f5, 0x1548e7f1, 0xf100e3f0,
-+	0xf10101d7, 0xf58000d3, 0xf10e3521, 0xf0f050e7,
-+	0xd7f110e3, 0xd3f10450, 0x21f5ff00, 0x00f80e35,
-+	0x0dde21f5, 0xb804d5fd, 0x0bf406d4, 0x0172b610,
-+	0xf40076b0, 0x0ef5ed1b, 0x00f8f411, 0xb00172b6,
-+	0x1bf40076, 0xf100f8fa, 0xb603e877, 0x76b00172,
-+	0xfa1bf400, 0x67f100f8, 0x77f11620, 0x73f1f55d,
-+	0x6eb9ffff, 0xde21f502, 0x04d7fd0d, 0x0e3521f5,
-+	0xfffe77f1, 0xffff73f1, 0xf5026eb9, 0xfd0dde21,
-+	0x21f504d7, 0x67f10e35, 0x6eb926f0, 0xde21f502,
-+	0x04d7fd0d, 0x0e3521f5, 0x07e097f1, 0xf00694b6,
-+	0x9bd004b7, 0xf104bd00, 0xf1010073, 0xb607c097,
-+	0x99cf0694, 0x0494f000, 0xf40096b0, 0x72b6101b,
-+	0x0076b001, 0xf5e71bf4, 0xf8f3800e, 0xe497f100,
-+	0x0694b607, 0xd004b7f0, 0x04bd009b, 0x010073f1,
-+	0x07c097f1, 0xcf0694b6, 0x94f00099, 0x0096b004,
-+	0xb6100bf4, 0x76b00172, 0xe71bf400, 0xf34b0ef5,
-+	0x26f067f1, 0xf5026eb9, 0xf10dde21, 0xfd000177,
-+	0x21f505d7, 0x67f10e35, 0x6eb91620, 0xde21f502,
-+	0xa377f10d, 0x05d7fd0a, 0x0e3521f5, 0x07f100f8,
-+	0x04b607a0, 0x000ed006, 0xd7f104bd, 0xd3f00001,
-+	0xac07f101, 0x0604b607, 0xbd000dd0, 0x10c3f004,
-+	0x07acd7f1, 0xcf06d4b6, 0xd4f100dd, 0xd6b17000,
-+	0x1bf41000, 0x01c2b610, 0xf400c6b0, 0x0ef5e51b,
-+	0xd6b0f2d9, 0xd21bf500, 0xa4d7f1f2, 0x06d4b607,
-+	0xf800ddcf, 0xa007f100, 0x0604b607, 0xbd000ed0,
-+	0xa407f104, 0x0604b607, 0xbd000dd0, 0xf2d7f104,
-+	0x01d3f000, 0x07ac07f1, 0xd00604b6, 0x04bd000d,
-+	0xf110c3f0, 0xb607acd7, 0xddcf06d4, 0x00d4f100,
-+	0x00d6b170, 0x101bf410, 0xb001c2b6, 0x1bf400c6,
-+	0x760ef5e5, 0x00d6b0f2, 0xf26f1bf5, 0x000000f8,
-+	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-+	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-+	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-+	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-+	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-+	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0xf8050ef4, 0x0397f001, 0xfe0090fe, 0x93fe0091,
++	0x0097f100, 0x0094fe30, 0x008497f1, 0xcf0694b6,
++	0xa6b0009a, 0x0c0bf401, 0xf402a6b0, 0x0ef40c0b,
++	0x9d21f432, 0xf50a0ef4, 0xf4062f21, 0x97f1030e,
++	0x94b60084, 0x00b7f106, 0x009bd100, 0x008097f1,
++	0xf10694b6, 0xf10001b7, 0xd1e1ecb3, 0x04bd009b,
++	0x01f477f1, 0xb00172b6, 0x1bf40076, 0x8497f1fa,
++	0x0694b600, 0xb0009acf, 0x0bf401a6, 0x02a6b0b7,
++	0xf4b70bf4, 0x97f1dd0e, 0x94b60080, 0x00b7f106,
++	0xadb3f100, 0x009bd1de, 0x0ef404bd, 0x00e7f1c6,
++	0x13e3f073, 0x0103d7f1, 0x0d8e21f5, 0x7370e7f1,
++	0xf013e3f0, 0x21f507d7, 0xe7f10d8e, 0xe3f07380,
++	0x01d7f013, 0x0d8e21f5, 0xf808e7f1, 0xf110e3f0,
++	0xf10004d7, 0xf54802d3, 0xf10d8e21, 0xf0f824e7,
++	0xd7f110e3, 0xd3f07867, 0x8e21f502, 0xa477f10d,
++	0x4521f502, 0x0ce7f10c, 0x10e3f00b, 0x0012d7f1,
++	0xf508d3f0, 0xf50d8e21, 0xf10c5021, 0xf01200e7,
++	0xd7f161e3, 0x21f53300, 0x21f50d8e, 0xe7f10c5f,
++	0xe3f0f200, 0x00d7f110, 0x02d3f080, 0x0d8e21f5,
++	0xf808e7f1, 0xf110e3f0, 0xf10004d7, 0xf54c02d3,
++	0xf10d8e21, 0xf502a477, 0xf10c4521, 0xf073ece7,
++	0xd7f113e3, 0xd3f00909, 0x8e21f502, 0x90e7f10d,
++	0x10e3f0f2, 0x9213d7f1, 0x061ad3f1, 0x0d8e21f5,
++	0xf314e7f1, 0xf010e3f0, 0x21f501d7, 0xe7f10d8e,
++	0xe3f0f210, 0xf5d4bd10, 0xf10d8e21, 0xf0f310e7,
++	0xd7f010e3, 0x8e21f501, 0x10e7f10d, 0x10e3f0f3,
++	0xf501d7f0, 0xf00d8e21, 0x21f56477, 0xe7f10c45,
++	0xe3f0f090, 0x60d7f010, 0x0d8e21f5, 0xf090e7f1,
++	0xf110e3f0, 0xf1007ed7, 0xf5c000d3, 0xf10d8e21,
++	0xf07360e7, 0xd7f013e3, 0x8e21f501, 0x70e7f10d,
++	0x13e3f073, 0x21f5d4bd, 0xe7f10d8e, 0xe3f07380,
++	0xf5d4bd13, 0xf10d8e21, 0xf02000e7, 0xd7f113e3,
++	0xd3f10000, 0x21f51803, 0xe7f10d8e, 0xe3f0fe20,
++	0x00d7f110, 0x03d3f100, 0x8e21f520, 0x20e7f10d,
++	0x13e3f073, 0x0103d7f1, 0x0d8e21f5, 0x7330e7f1,
++	0xf113e3f0, 0xf10600d7, 0xf58120d3, 0xf10d8e21,
++	0xf0fe20e7, 0xd7f110e3, 0xd3f10001, 0x21f52003,
++	0xe7f10d8e, 0xe3f07390, 0x0057f113, 0x0253f000,
++	0x000047f1, 0xf10243f0, 0xf0000077, 0x21f51073,
++	0xe7f10c29, 0xe3f0fe20, 0x05d7f110, 0x03d3f100,
++	0x8e21f520, 0x04e7f10d, 0x13e3f020, 0x230bd7f1,
++	0xf502d3f0, 0xf10d8e21, 0xf02000e7, 0xd7f113e3,
++	0xd3f10001, 0x21f51803, 0xe7f10d8e, 0xe3f07390,
++	0x0257f013, 0xf10247f0, 0xf0000077, 0x21f51073,
++	0xe7f10c29, 0xe3f0f874, 0xf5d4bd10, 0xf10d8e21,
++	0xf0f824e7, 0xd7f110e3, 0xd3f01867, 0x8e21f502,
++	0xa477f10d, 0x4521f502, 0x18e7f10c, 0x13e3f020,
++	0x5000d7f1, 0x0d8e21f5, 0x054977f1, 0x0c4521f5,
++	0xf910e7f1, 0xf110e3f0, 0xf52000d7, 0xf10d8e21,
++	0xf0f914e7, 0xd7f110e3, 0x21f52000, 0xe7f10d8e,
++	0xe3f0f658, 0xf5d4bd10, 0xf10d8e21, 0xf0f830e7,
++	0xd7f010e3, 0x8e21f511, 0xa477f10d, 0x4521f502,
++	0x70e7f10c, 0x13e3f073, 0xf507d7f0, 0xf10d8e21,
++	0xf07380e7, 0xd7f013e3, 0x8e21f501, 0x60e7f10d,
++	0x13e3f073, 0x21f5d4bd, 0xe7f10d8e, 0xe3f0f090,
++	0x7fd7f110, 0x00d3f100, 0x8e21f540, 0x10e7f10d,
++	0x10e3f0f2, 0x0000d7f1, 0x8000d3f1, 0x0d8e21f5,
++	0xf56477f0, 0xf10c4521, 0xf0f300e7, 0xd7f110e3,
++	0x21f51520, 0x77f00d8e, 0x4521f564, 0x00e7f10c,
++	0x10e3f0f3, 0x1420d7f1, 0x0d8e21f5, 0xf56477f0,
++	0xf10c4521, 0xf0f320e7, 0xd7f110e3, 0xd3f000a0,
++	0x8e21f520, 0x6477f00d, 0x0c4521f5, 0xf300e7f1,
++	0xf110e3f0, 0xf51e04d7, 0xf00d8e21, 0x21f56477,
++	0xe7f10c45, 0xe3f0f224, 0x07d7f110, 0x07d3f10c,
++	0x8e21f50e, 0x90e7f10d, 0x10e3f0f2, 0x922ed7f1,
++	0x0e44d3f1, 0x0d8e21f5, 0xf294e7f1, 0xf110e3f0,
++	0xf1848cd7, 0xf54ce3d3, 0xf10d8e21, 0xf0f298e7,
++	0xd7f110e3, 0xd3f10711, 0x21f5440e, 0xe7f10d8e,
++	0xe3f0f29c, 0xb6d7f110, 0x8e21f550, 0xa0e7f10d,
++	0x10e3f0f2, 0x8069d7f1, 0x42e3d3f1, 0x0d8e21f5,
++	0xf200e7f1, 0xf110e3f0, 0xf09000d7, 0x21f502d3,
++	0xe7f10d8e, 0xe3f0f604, 0x00d7f110, 0x00d3f100,
++	0x8e21f5f1, 0x14e7f10d, 0x10e3f0f6, 0x4e77d7f1,
++	0x4004d3f1, 0x0d8e21f5, 0xf610e7f1, 0xf110e3f0,
++	0xf14e77d7, 0xf54004d3, 0xf10d8e21, 0xf0f808e7,
++	0xd7f110e3, 0xd3f10000, 0x21f55692, 0x77f10d8e,
++	0x21f502a4, 0xe7f10c45, 0xe3f073f8, 0x40d7f113,
++	0x8e21f520, 0x70e7f10d, 0x10e3f0f8, 0xaaaad7f1,
++	0xaaaad3f1, 0x0d8e21f5, 0x02a477f1, 0x0c4521f5,
++	0x0c00e7f1, 0xf110e3f0, 0xf10124d7, 0xf50400d3,
++	0xf10d8e21, 0xf0f300e7, 0xd7f110e3, 0x21f51f04,
++	0x77f00d8e, 0x4521f564, 0x00e7f10c, 0x10e3f0f3,
++	0x1e04d7f1, 0x0d8e21f5, 0xf56477f0, 0xf00c4521,
++	0x21f56477, 0xe7f10c45, 0xe3f0f830, 0x11d7f110,
++	0x00d3f100, 0x8e21f501, 0x30e7f10d, 0x10e3f0f8,
++	0xf511d7f0, 0xf50d8e21, 0xf10cd621, 0xf502a477,
++	0xf10c4521, 0xf00b0ce7, 0xd7f110e3, 0xd3f00028,
++	0x8e21f508, 0x00e7f10d, 0x61e3f012, 0x3330d7f1,
++	0x0d8e21f5, 0xf200e7f1, 0xf110e3f0, 0xf09800d7,
++	0x21f502d3, 0xe7f10d8e, 0xe3f0f824, 0x67d7f110,
++	0x02d3f01e, 0x0d8e21f5, 0xf808e7f1, 0xf110e3f0,
++	0xf10004d7, 0xf54802d3, 0xf10d8e21, 0xf0f468e7,
++	0xd7f110e3, 0xd3f00020, 0x8e21f502, 0x00e7f10d,
++	0x10e3f0f4, 0x171fd7f1, 0x0d8e21f5, 0xf410e7f1,
++	0xf110e3f0, 0xf50107d7, 0xf10d8e21, 0xf0f420e7,
++	0xd7f010e3, 0x8e21f543, 0x30e7f10d, 0x10e3f0f4,
++	0xf541d7f0, 0xf10d8e21, 0xf0f444e7, 0xd7f110e3,
++	0xd3f1883f, 0x21f504cc, 0xe7f10d8e, 0xe3f0f050,
++	0x50d7f110, 0x00d3f110, 0x8e21f5ff, 0xf100f80d,
++	0xf07300e7, 0xd7f113e3, 0x21f50103, 0xe7f10d8e,
++	0xe3f07370, 0x07d7f013, 0x0d8e21f5, 0x7380e7f1,
++	0xf013e3f0, 0x21f501d7, 0xe7f10d8e, 0xe3f0f824,
++	0x67d7f110, 0x02d3f018, 0x0d8e21f5, 0x02a477f1,
++	0x0c4521f5, 0x0b0ce7f1, 0xf110e3f0, 0xf00012d7,
++	0x21f508d3, 0x21f50d8e, 0xe7f10c50, 0xe3f01200,
++	0x00d7f161, 0x8e21f533, 0x5f21f50d, 0x00e7f10c,
++	0x10e3f0f2, 0x9000d7f1, 0xf502d3f0, 0xf10d8e21,
++	0xf0f314e7, 0xd7f010e3, 0x8e21f501, 0x10e7f10d,
++	0x10e3f0f2, 0x21f5d4bd, 0xe7f10d8e, 0xe3f0f310,
++	0x01d7f010, 0x0d8e21f5, 0xf310e7f1, 0xf010e3f0,
++	0x21f501d7, 0x77f00d8e, 0x4521f564, 0x90e7f10c,
++	0x10e3f0f0, 0xf560d7f0, 0xf10d8e21, 0xf0f090e7,
++	0xd7f110e3, 0xd3f1007e, 0x21f5c000, 0xe7f10d8e,
++	0xe3f07360, 0x01d7f013, 0x0d8e21f5, 0xf830e7f1,
++	0xf010e3f0, 0x21f517d7, 0x77f10d8e, 0x21f502a4,
++	0xe7f10c45, 0xe3f07370, 0xf5d4bd13, 0xf10d8e21,
++	0xf07380e7, 0xd4bd13e3, 0x0d8e21f5, 0x2018e7f1,
++	0xf113e3f0, 0xf51000d7, 0xf10d8e21, 0xf02000e7,
++	0xd7f113e3, 0xd3f10000, 0x21f51803, 0xe7f10d8e,
++	0xe3f0fe20, 0x00d7f110, 0x03d3f100, 0x8e21f520,
++	0x20e7f10d, 0x13e3f073, 0x0103d7f1, 0x0d8e21f5,
++	0x7330e7f1, 0xf113e3f0, 0xf10600d7, 0xf58120d3,
++	0xf10d8e21, 0xf0fe20e7, 0xd7f110e3, 0xd3f10001,
++	0x21f52003, 0xe7f10d8e, 0xe3f07390, 0x0057f113,
++	0x0253f000, 0x000047f1, 0xf10243f0, 0xf0000077,
++	0x21f51073, 0xe7f10c29, 0xe3f0fe20, 0x05d7f110,
++	0x03d3f100, 0x8e21f520, 0x04e7f10d, 0x13e3f020,
++	0x1806d7f1, 0xf507d3f0, 0xf10d8e21, 0xf02000e7,
++	0xd7f113e3, 0xd3f10001, 0x21f51803, 0xe7f10d8e,
++	0xe3f07390, 0x0257f013, 0xf10247f0, 0xf0000077,
++	0x21f51073, 0xe7f10c29, 0xe3f0f874, 0x00d7f110,
++	0x00d3f100, 0x8e21f504, 0x58e7f10d, 0x10e3f0f6,
++	0x8989d7f1, 0xf591d3f0, 0xf10d8e21, 0xf5054977,
++	0xf10c4521, 0xf02018e7, 0xd7f113e3, 0xd3f11000,
++	0x21f51000, 0xe7f10d8e, 0xe3f0f660, 0x10d7f110,
++	0x8e21f510, 0x10e7f10d, 0x10e3f0f9, 0x21f5d4bd,
++	0xe7f10d8e, 0xe3f0f914, 0xf5d4bd10, 0xf10d8e21,
++	0xf0f824e7, 0xd7f110e3, 0xd3f07867, 0x8e21f502,
++	0x4977f10d, 0x4521f505, 0x70e7f10c, 0x13e3f073,
++	0xf507d7f0, 0xf10d8e21, 0xf07380e7, 0xd7f013e3,
++	0x8e21f501, 0x60e7f10d, 0x13e3f073, 0x21f5d4bd,
++	0xe7f10d8e, 0xe3f0f090, 0x7fd7f110, 0x00d3f100,
++	0x8e21f540, 0x10e7f10d, 0x10e3f0f2, 0x0000d7f1,
++	0x8000d3f1, 0x0d8e21f5, 0x008777f1, 0x0c4521f5,
++	0xf300e7f1, 0xf110e3f0, 0xf51f04d7, 0xf00d8e21,
++	0x21f56477, 0xe7f10c45, 0xe3f0f300, 0x04d7f110,
++	0x8e21f51e, 0x6477f00d, 0x0c4521f5, 0xf320e7f1,
++	0xf110e3f0, 0xf00080d7, 0x21f520d3, 0x77f00d8e,
++	0x4521f564, 0x00e7f10c, 0x10e3f0f3, 0x1420d7f1,
++	0x0d8e21f5, 0xf56477f0, 0xf10c4521, 0xf0f224e7,
++	0xd7f110e3, 0xd3f10c07, 0x21f50e05, 0xe7f10d8e,
++	0xe3f0f290, 0x13d7f110, 0x1ad3f138, 0x8e21f506,
++	0x94e7f10d, 0x10e3f0f2, 0x8286d7f1, 0x4c61d3f1,
++	0x0d8e21f5, 0xf298e7f1, 0xf110e3f0, 0xf10411d7,
++	0xf54406d3, 0xf10d8e21, 0xf0f29ce7, 0xd7f110e3,
++	0x21f51e6a, 0xe7f10d8e, 0xe3f0f2a0, 0x69d7f110,
++	0xe2d3f180, 0x8e21f542, 0x00e7f10d, 0x10e3f0f2,
++	0x8000d7f1, 0xf502d3f0, 0xf10d8e21, 0xf0f604e7,
++	0xd7f110e3, 0xd3f10000, 0x21f5f000, 0xe7f10d8e,
++	0xe3f0f614, 0x77d7f110, 0x04d3f14f, 0x8e21f540,
++	0x10e7f10d, 0x10e3f0f6, 0x4f77d7f1, 0x4004d3f1,
++	0x0d8e21f5, 0xf808e7f1, 0xf110e3f0, 0xf10004d7,
++	0xf54802d3, 0xf10d8e21, 0xf50aa477, 0xf10c4521,
++	0xf073ece7, 0xd7f113e3, 0x21f50909, 0xe7f10d8e,
++	0xe3f073f8, 0x55d7f113, 0x8e21f520, 0x70e7f10d,
++	0x10e3f0f8, 0xaaaad7f1, 0xaaaad3f1, 0x0d8e21f5,
++	0x02a477f1, 0x0c4521f5, 0x0c00e7f1, 0xf110e3f0,
++	0xf10124d7, 0xf50c00d3, 0xf10d8e21, 0xf0f300e7,
++	0xd7f110e3, 0x21f51520, 0x77f00d8e, 0x4521f564,
++	0x00e7f10c, 0x10e3f0f3, 0x1420d7f1, 0x0d8e21f5,
++	0xf56477f0, 0xf10c4521, 0xf5008777, 0xf10c4521,
++	0xf0f324e7, 0xd7f110e3, 0x21f503cb, 0x77f00d8e,
++	0x4521f564, 0x24e7f10c, 0x10e3f0f3, 0x06cbd7f1,
++	0x0d8e21f5, 0xf56477f0, 0xf10c4521, 0xf0f324e7,
++	0xd7f110e3, 0x21f501cb, 0x77f00d8e, 0x4521f564,
++	0x24e7f10c, 0x10e3f0f3, 0x03cad7f1, 0x0d8e21f5,
++	0xf56477f0, 0xf10c4521, 0xf0f324e7, 0xd7f110e3,
++	0x21f506ca, 0x77f00d8e, 0x4521f564, 0x24e7f10c,
++	0x10e3f0f3, 0x01cad7f1, 0x0d8e21f5, 0xf56477f0,
++	0xf10c4521, 0xf0f830e7, 0xd7f110e3, 0xd3f10017,
++	0x21f50100, 0xe7f10d8e, 0xe3f0f830, 0x17d7f010,
++	0x0d8e21f5, 0x0cd621f5, 0x02a477f1, 0x0c4521f5,
++	0x0b0ce7f1, 0xf110e3f0, 0xf00028d7, 0x21f508d3,
++	0xe7f10d8e, 0xe3f01200, 0x30d7f161, 0x8e21f533,
++	0x00e7f10d, 0x10e3f0f2, 0x8800d7f1, 0xf502d3f0,
++	0xf10d8e21, 0xf0f824e7, 0xd7f110e3, 0xd3f079e7,
++	0x8e21f502, 0x08e7f10d, 0x10e3f0f8, 0x0004d7f1,
++	0x4802d3f1, 0x0d8e21f5, 0xf468e7f1, 0xf110e3f0,
++	0xf51005d7, 0xf10d8e21, 0xf0f400e7, 0xd7f110e3,
++	0x21f51707, 0xe7f10d8e, 0xe3f0f410, 0x07d7f110,
++	0x8e21f503, 0x20e7f10d, 0x10e3f0f4, 0xf542d7f0,
++	0xf10d8e21, 0xf0f430e7, 0xd7f010e3, 0x8e21f540,
++	0x44e7f10d, 0x10e3f0f4, 0x001fd7f1, 0x04ccd3f1,
++	0x0d8e21f5, 0xf050e7f1, 0xf110e3f0, 0xf10450d7,
++	0xf5ff00d3, 0xf80d8e21, 0x3721f500, 0x04d5fd0d,
++	0xf406d4b8, 0x72b6100b, 0x0076b001, 0xf5ed1bf4,
++	0xf8f4470e, 0x0172b600, 0xf40076b0, 0x00f8fa1b,
++	0x03e877f1, 0xb00172b6, 0x1bf40076, 0xf100f8fa,
++	0xf1162067, 0xf1f55d77, 0xb9ffff73, 0x21f5026e,
++	0xd7fd0d37, 0x8e21f504, 0xfe77f10d, 0xff73f1ff,
++	0x026eb9ff, 0x0d3721f5, 0xf504d7fd, 0xf10d8e21,
++	0xb926f067, 0x21f5026e, 0xd7fd0d37, 0x8e21f504,
++	0xe097f10d, 0x0694b607, 0xd004b7f0, 0x04bd009b,
++	0x010073f1, 0x07c097f1, 0xcf0694b6, 0x94f00099,
++	0x0096b004, 0xb6101bf4, 0x76b00172, 0xe71bf400,
++	0xf3b60ef5, 0x97f100f8, 0x94b607e4, 0x04b7f006,
++	0xbd009bd0, 0x0073f104, 0xc097f101, 0x0694b607,
++	0xf00099cf, 0x96b00494, 0x100bf400, 0xb00172b6,
++	0x1bf40076, 0x810ef5e7, 0xf067f1f3, 0x026eb926,
++	0x0d3721f5, 0x000177f1, 0xf505d7fd, 0xf10d8e21,
++	0xb9162067, 0x21f5026e, 0x77f10d37, 0xd7fd0aa3,
++	0x8e21f505, 0xf100f80d, 0xb607a007, 0x0ed00604,
++	0xf104bd00, 0xf00001d7, 0x07f101d3, 0x04b607ac,
++	0x000dd006, 0xc3f004bd, 0xacd7f110, 0x06d4b607,
++	0xf100ddcf, 0xb17000d4, 0xf41000d6, 0xc2b6101b,
++	0x00c6b001, 0xf5e51bf4, 0xb0f30f0e, 0x1bf500d6,
++	0xd7f1f308, 0xd4b607a4, 0x00ddcf06, 0x07f100f8,
++	0x04b607a0, 0x000ed006, 0x07f104bd, 0x04b607a4,
++	0x000dd006, 0xd7f104bd, 0xd3f000f2, 0xac07f101,
++	0x0604b607, 0xbd000dd0, 0x10c3f004, 0x07acd7f1,
++	0xcf06d4b6, 0xd4f100dd, 0xd6b17000, 0x1bf41000,
++	0x01c2b610, 0xf400c6b0, 0x0ef5e51b, 0xd6b0f2ac,
++	0xa51bf500, 0x0000f8f2, 0x00000000, 0x00000000,
 +	0x00000000, 0x00000000, 0x00000000, 0x00000000,
 +};
-diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/fb/ramfuc.h nouveau-source/nvkm/subdev/fb/ramfuc.h
+diff -uNrp -x '*.o' -x '*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/fb/ramfuc.h nouveau-source/nvkm/subdev/fb/ramfuc.h
 --- nouveau-orig/nvkm/subdev/fb/ramfuc.h	2026-06-12 01:03:26.000000000 +0300
 +++ nouveau-source/nvkm/subdev/fb/ramfuc.h	2026-09-07 14:09:18.333515126 +0300
 @@ -4,10 +4,15 @@
@@ -668,10 +641,10 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  }
  
  #define ram_init(s,p)        ramfuc_init(&(s)->base, (p))
-diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/fb/ramgf100.c nouveau-source/nvkm/subdev/fb/ramgf100.c
+diff -uNrp -x '*.o' -x '*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/fb/ramgf100.c nouveau-source/nvkm/subdev/fb/ramgf100.c
 --- nouveau-orig/nvkm/subdev/fb/ramgf100.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-source/nvkm/subdev/fb/ramgf100.c	2026-09-17 21:20:21.178635156 +0300
-@@ -123,6 +123,286 @@ gf100_ram_train(struct gf100_ramfuc *fuc
++++ nouveau-source/nvkm/subdev/fb/ramgf100.c	2026-09-17 17:12:26.152708353 +0300
+@@ -123,6 +123,255 @@ gf100_ram_train(struct gf100_ramfuc *fuc
  	}
  }
  
@@ -741,32 +714,17 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
 +	cmd = (freq == 900000) ? 1 : 2;
 +
 +	/* Check if resident executor is already running and ready in Falcon IMEM */
-+	if (fexec_resident_running) {
-+		u32 uc_ctrl = nvkm_rd32(device, 0x10a100);
-+		u32 s0 = nvkm_rd32(device, 0x10a080);
-+		u32 s1 = nvkm_rd32(device, 0x10a084);
-+		u32 pc = nvkm_rd32(device, 0x10aff0);
-+		u32 st = nvkm_rd32(device, 0x10a128);
-+
-+		nvkm_info(subdev, "DDR3: resident fast-path request: cmd=%u (target %u kHz) [UC=%08x S0=%08x S1=%08x PC=%08x ST=%08x]\n",
-+			  cmd, freq, uc_ctrl, s0, s1, pc, st);
-+
-+		/* If Falcon stopped, restart it directly WITHOUT touching PMC 0x000200 */
-+		if (uc_ctrl & 0x10) {
-+			nvkm_warn(subdev, "DDR3: Falcon stopped (UC=%08x, PC=%08x), restarting directly without PMC reset\n",
-+				  uc_ctrl, pc);
-+			nvkm_wr32(device, 0x10a080, 0x00000000);
-+			nvkm_wr32(device, 0x10a084, cmd);
-+			nvkm_wr32(device, 0x10a10c, 0x00000000);
-+			nvkm_wr32(device, 0x10a104, 0x00000000);
-+			nvkm_wr32(device, 0x10a100, 0x00000002);
-+		} else {
-+			/* Falcon is running resident: write command to SCRATCH3 */
-+			nvkm_wr32(device, 0x10a080, 0x00000000);  /* clear DONE */
-+			nvkm_wr32(device, 0x10a084, cmd);         /* send cmd: 1=900, 2=324 */
-+		}
++	if (fexec_resident_running &&
++	    (nvkm_rd32(device, 0x10a100) & 0x12) == 0x02 &&
++	    nvkm_rd32(device, 0x10a080) == 0xE1EC0001) {
++		/* Fast path: Resident executor is active. No PMC reset or IMEM upload needed! */
++		nvkm_wr32(device, 0x10a080, 0x00000000);  /* clear DONE */
++		nvkm_wr32(device, 0x10a084, cmd);         /* send cmd: 1=900, 2=324 */
 +		(void)nvkm_rd32(device, 0x10a080);
 +		(void)nvkm_rd32(device, 0x10a084);
++
++		nvkm_info(subdev, "DDR3: resident executor fast-path: cmd=%u (target %u kHz)\n",
++			  cmd, freq);
 +
 +		/* Poll DONE (2s backstop) */
 +		deadline = jiffies + msecs_to_jiffies(2000);
@@ -778,10 +736,6 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
 +		} while (time_before(jiffies, deadline));
 +
 +		if (done == 0xE1EC0001) {
-+			/* Assert hardware PHY timing commit latch from host */
-+			nvkm_wr32(device, 0x001548, 0x00000101);
-+			nvkm_wr32(device, 0x001548, 0x80000101);
-+
 +			deadline = jiffies + msecs_to_jiffies(100);
 +			do {
 +				cur = nvkm_clk_read(device->clk, nv_clk_src_mem);
@@ -802,23 +756,16 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
 +			return -EIO;
 +		}
 +
-+		nvkm_error(subdev, "DDR3: resident executor fast-path %s (cmd=%u SCRATCH2=%08x SCRATCH3=%08x UC=%08x PC=%08x ST=%08x)\n",
++		nvkm_error(subdev, "DDR3: resident executor fast-path %s (cmd=%u SCRATCH0=%08x SCRATCH1=%08x UC=%08x PC=%08x)\n",
 +			   done ? "error" : "timeout", cmd, done,
 +			   nvkm_rd32(device, 0x10a084),
 +			   nvkm_rd32(device, 0x10a100),
-+			   nvkm_rd32(device, 0x10aff0),
-+			   nvkm_rd32(device, 0x10a128));
++			   nvkm_rd32(device, 0x10aff0));
++		fexec_resident_running = false;
 +		return -ETIMEDOUT;
 +	}
 +
 +	/* Cold path: First transition after boot - reset PDAEMON and start resident executor */
-+	/* Safety check: Never reset PDAEMON via 0x000200 if memory clock > 400 MHz */
-+	cur = nvkm_clk_read(device->clk, nv_clk_src_mem);
-+	if (cur > 400000) {
-+		nvkm_error(subdev, "DDR3: refusing cold-path PDAEMON reset while memory clock is %u kHz!\n", cur);
-+		return -EBUSY;
-+	}
-+
 +	/* Reset PDAEMON */
 +	pmc = nvkm_rd32(device, 0x000200);
 +	nvkm_wr32(device, 0x000200, pmc & ~0x00002000);
@@ -888,11 +835,6 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
 +
 +	if (done == 0xE1EC0001) {
 +		fexec_resident_running = true;
-+
-+		/* Assert hardware PHY timing commit latch from host */
-+		nvkm_wr32(device, 0x001548, 0x00000101);
-+		nvkm_wr32(device, 0x001548, 0x80000101);
-+
 +		deadline = jiffies + msecs_to_jiffies(100);
 +		do {
 +			cur = nvkm_clk_read(device->clk, nv_clk_src_mem);
@@ -958,7 +900,7 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  int
  gf100_ram_calc(struct nvkm_ram *base, u32 freq)
  {
-@@ -143,6 +423,9 @@ gf100_ram_calc(struct nvkm_ram *base, u3
+@@ -143,6 +392,9 @@ gf100_ram_calc(struct nvkm_ram *base, u3
  	int N1, M1, P;
  	int ret;
  
@@ -968,7 +910,7 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  	/* lookup memory config data relevant to the target frequency */
  	rammap.data = nvbios_rammapEm(bios, freq / 1000, &ver, &rammap.size,
  				      &cnt, &ramcfg.size, &cfg);
-@@ -408,6 +691,22 @@ gf100_ram_prog(struct nvkm_ram *base)
+@@ -408,6 +660,22 @@ gf100_ram_prog(struct nvkm_ram *base)
  {
  	struct gf100_ram *ram = gf100_ram(base);
  	struct nvkm_device *device = ram->base.fb->subdev.device;
@@ -991,7 +933,7 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  	ram_exec(&ram->fuc, nvkm_boolopt(device->cfgopt, "NvMemExec", true));
  	return 0;
  }
-@@ -650,6 +949,14 @@ gf100_ram_new_(const struct nvkm_ram_fun
+@@ -650,6 +918,14 @@ gf100_ram_new_(const struct nvkm_ram_fun
  	ram->fuc.r_0x611200 = ramfuc_reg(0x611200);
  
  	ram->fuc.r_0x13d8f4 = ramfuc_reg(0x13d8f4);
@@ -1006,7 +948,7 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  	return 0;
  }
  
-diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/pmu/fuc/gf100.fuc3.h nouveau-source/nvkm/subdev/pmu/fuc/gf100.fuc3.h
+diff -uNrp -x '*.o' -x '*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/pmu/fuc/gf100.fuc3.h nouveau-source/nvkm/subdev/pmu/fuc/gf100.fuc3.h
 --- nouveau-orig/nvkm/subdev/pmu/fuc/gf100.fuc3.h	2026-06-12 01:03:26.000000000 +0300
 +++ nouveau-source/nvkm/subdev/pmu/fuc/gf100.fuc3.h	2026-09-07 14:09:18.334644255 +0300
 @@ -1260,7 +1260,7 @@ static uint32_t gf100_pmu_code[] = {
@@ -1033,7 +975,7 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  /* 0x050a: host_init */
  	0x17f100f8,
  	0x14b60080,
-diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/pmu/gt215.c nouveau-source/nvkm/subdev/pmu/gt215.c
+diff -uNrp -x '*.o' -x '*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/pmu/gt215.c nouveau-source/nvkm/subdev/pmu/gt215.c
 --- nouveau-orig/nvkm/subdev/pmu/gt215.c	2026-06-12 01:03:26.000000000 +0300
 +++ nouveau-source/nvkm/subdev/pmu/gt215.c	2026-09-07 15:06:39.534885364 +0300
 @@ -23,6 +23,7 @@
@@ -1624,7 +1566,7 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  	return 0;
  }
  
-diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/pmu/memx.c nouveau-source/nvkm/subdev/pmu/memx.c
+diff -uNrp -x '*.o' -x '*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/pmu/memx.c nouveau-source/nvkm/subdev/pmu/memx.c
 --- nouveau-orig/nvkm/subdev/pmu/memx.c	2026-06-12 01:03:26.000000000 +0300
 +++ nouveau-source/nvkm/subdev/pmu/memx.c	2026-09-07 14:09:18.336312616 +0300
 @@ -61,9 +61,11 @@ nvkm_memx_init(struct nvkm_pmu *pmu, str
